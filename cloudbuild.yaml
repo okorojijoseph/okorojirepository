@@ -1,0 +1,12 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/omega-baton-401802/joseph-100912328/nodejs-app:${COMMIT_SHA}', '.']
+    
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/omega-baton-401802/joseph-100912328/nodejs-app:${COMMIT_SHA}']
+
+options:
+  defaultLogsBucketBehavior: 'REGIONAL_USER_OWNED_BUCKET'
+
+images:
+  - 'us-central1-docker.pkg.dev/omega-baton-401802/joseph-100912328/nodejs-app:${COMMIT_SHA}'
